@@ -32,7 +32,7 @@ let { description, size } = await inquirer
         {
             name: 'description',
             type: 'input',
-            message: "Write a description of your project",
+            message: "My README generator homework assignment is like having a personal assistant for your software documentation needs. Instead of spending time crafting a polished README file, you can simply input your project information and let the generator do the heavy lifting. With just a few clicks, you'll have a professional-looking README. Whether you prefer a command-line interface or a user-friendly web form, the generator can output your README in the format you need, be it Markdown or HTML. ",
         },
         // Size (example)
         {
@@ -54,45 +54,49 @@ let { description, size } = await inquirer
                 return val.toLowerCase();
             }
         },
-        //Installation
+
+        //Installation Instructions
         {
-            name: 'installation',
+            name: 'installation_instructions',
             type: 'input',
             message: "How to install project",
-
         },
-        //Usage
+        
+        //Usage Information
         {
-            name: 'password1',
-            type: 'password',
-            message: 'Enter a password',
-            validate: requireLetterAndNumber,
+            name: 'installation_instructions',
+            type: 'input',
+            message: "How to install project",
+        
         },
-        //License
+
+        //License / could this be a list of different licenses?
         {
             name: 'license',
             type: 'input',
             message: '',
 
         },
-        //Contributions
+
+        //Contribution Guidelines
         {
             name: 'contributions',
             type: '',
             message: '',
         },
-        //Tests
+
+        //Test Instructions
         {
             name: 'tests',
             type: '',
             message: '',
         },
+
         //Questions
         {
             name: 'questions',
             type: '',
             message: '',
-
         }
 
 
@@ -104,13 +108,22 @@ let { description, size } = await inquirer
 
 // console.log(response);
 
-let readmeText = `# Project Description
+let readmeText = 
+
+`# Project Description
         ${description}
         `
-
-let installation = `## Installation
-        ${installationinstructions}
-        
+`## Installation Instructions
+        ${installation}
+        `
+`## Usage Information
+        ${usage}
+        `
+`## Contributions
+        ${contributing}
+        `
+`## Test Instructions
+        ${tests}
         `
 
 
@@ -130,7 +143,6 @@ let licenseSize = `# License Size
 
 
 fs.writeFile("README.md", readmeText)
-// console.log(first_name, last_name);
 
 function generateLicense(license) {
     console.log(license);
@@ -138,6 +150,7 @@ function generateLicense(license) {
 
     //if user selects license Jumbo, then you want to return a different string.
     if (license === "jumbo") {
+
 
         //license should appear on the readme file...video example 23mins in.
         //may need to change Jumbo to jumbo
@@ -156,7 +169,17 @@ function generateLicense(license) {
         //license > badge > github.
         //example: Boost Sofware License 1.0 *Find yourself a licence and connect it in the *return using "[here]"
 
+        //EXAMPLE FOR PASSWORD
+        // inquirer
+        // .prompt([
 
-
-
+        //     {
+        //         name: 'password1',
+        //         type: 'password',
+        //         message: 'Enter a password',
+        //         validate: requireLetterAndNumber,
+        //     },
+            
+        // ])
+        // .then((answers) => console.log(JSON.stringify(answers, null, '  ')));
 
