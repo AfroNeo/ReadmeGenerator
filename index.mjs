@@ -1,6 +1,13 @@
 import inquirer from "inquirer";
 import fs from "fs/promises";
 
+//My License
+//[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+
+
+//include *What the app is for. *How to use the app. *How to install it. *How to report issues. *How to make contributions.
+
+//
 
 // let response = await inquirer
 
@@ -47,19 +54,24 @@ let {description, size} = await inquirer
         // console.log(first_name, last_name);
 
         function generateLicense(license){
+            console.log(license);
+
 
             //if user selects license Jumbo, then you want to return a different string.
-            if(license === "Jumbo"){
+            if(license === "jumbo"){
 
                 //license should appear on the readme file...video example 23mins in.
                 //may need to change Jumbo to jumbo
-                return 
+                return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
 
             }
+
+            return ``
         }
 
         //license > badge > github. 
-        //example: Boost Sofware License 1.0
+        //example: Boost Sofware License 1.0 *Find yourself a licence and connect it in the *return using "[here]"
+
 
     
 
