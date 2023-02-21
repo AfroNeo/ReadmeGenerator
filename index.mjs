@@ -4,7 +4,8 @@ import fs from "fs";
 // TODO List:
 //must get license to generate on readme page!
 //how to put two questions and answers under the section questions.
-//github and email to become clickable links.
+//github and email to become clickable links. 
+//must record demo of how it all works
 
 
 //My License
@@ -22,16 +23,16 @@ const inquirerQuestions = [
         name: 'title',
         type: 'input',
         message: "What is the title of your project?"
-        
+
     },
     //Description
     {
         name: 'description',
         type: 'input',
         message: "What is the description of your project?"
-        
+
     },
-    
+
     //Table of Contents
     {
         name: 'contents',
@@ -42,20 +43,20 @@ const inquirerQuestions = [
             return val.toLowerCase();
         }
     },
-    
+
     //Installation Instructions
     {
         name: 'installation',
         type: 'input',
         message: "List any project dependencies",
     },
-    
+
     //Usage Information
     {
         name: 'usage',
         type: 'input',
         message: "What language is associated with this project?",
-    
+
     },
 
     //License
@@ -101,7 +102,7 @@ const inquirerQuestions = [
 ]
 // let { title, description, size, license, installation, contributing, test } = await inquirer.prompt([
 
-const { title, description, contents, installation, usage,  license, contributors, test, questions } = await inquirer.prompt(inquirerQuestions)
+const { title, description, contents, installation, usage, license, contributors, test, questions } = await inquirer.prompt(inquirerQuestions)
 
 const readmeText = `
 # Title
@@ -143,7 +144,7 @@ ${questions}
 
 `
 // Writes a readme file
-fs.writeFile("README.md", readmeText, (err) => 
+fs.writeFile("README.md", readmeText, (err) =>
     err ? console.log(err) : console.log('Success!')
 )
 
@@ -157,33 +158,26 @@ fs.writeFile("README.md", readmeText, (err) =>
 // * [Contributors](#contributing)
 // * [Test-Instructions](#test)
 // * [Questions](#questions)
-       
+
 
 // //return a string for generate license 
-// let licenseSize = `# License Size
-//         ${generateLicense(size)}
+// let licenseLicense = `# License
+//         ${generateLicense(license)}
 //         `
 
 
 // fs.writeFile("README.md", readmeText)
 
-function generateLicense(license) {
-    console.log(license);
+// function generateLicense(license) {
+//     console.log(license);
+
+//     if (license === "Apache 2.0 License") {
 
 
-//     //if user selects license Jumbo, then you want to return a different string.
-    if (license === "Apache 2.0 License") {
 
-
-    
-        return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
-
-    }
-
-//     // return ``
-
-
-//     if (license === "large") {
+//         return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
 
 //     }
-}
+
+// }
+
