@@ -1,16 +1,6 @@
 import inquirer from "inquirer";
 import fs from "fs";
 
-// The tile of my project
-//Sections entitled:
-// * Description 
-// * Table of Contents 
-// * Installation 
-// * Usage 
-// * License 
-// * Contributing 
-// * Tests 
-// * Questions
 
 //My License
 //[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
@@ -53,7 +43,7 @@ const inquirerQuestions = [
         name: 'contents',
         type: 'list',
         message: "Select from the table of contents",
-        choices: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions'],
+        choices: ['Installation', 'Usage', 'License', 'Contributors', 'Tests', 'Questions'],
         filter(val) {
             return val.toLowerCase();
         }
@@ -63,56 +53,71 @@ const inquirerQuestions = [
     {
         name: 'installation',
         type: 'input',
-        message: "How do you install?",
+        message: "List any project dependencies",
     },
     
     //Usage Information
     {
         name: 'usage',
         type: 'input',
-        message: "How to use it. Step by step guide",
+        message: "What language is associated with this project?",
     
     },
 
     //License / could this be a list of different licenses?
     {
-        name: 'license',
+        name: 'list',
         type: 'input',
-        message: "Here, I will say how it was license...",
+        message: ['MIT', 'Apache 2.0 License', 'Boost Software License 1.0', 'BSD 3-Clause License', 'BSD 2-Clause License']
 
     },
 
     //Contribution Guidelines
     {
         name: 'contributions',
-        type: '',
-        message: 'I am open to contributions for people who want to make changes to the project in terms of usabilty and functionality improvements',
+        type: 'input',
+        message: 'Do you have any project contributors? If so please provide names, here',
     },
 
     //Test Instructions
     {
         name: 'test',
-        type: '',
-        message: '',
+        type: 'input',
+        message: 'What are you testing?',
     },
 
     //Questions
     {
         name: 'questions',
-        type: '',
-        message: '',
+        type: 'input',
+        message: 'What is your GitHub username',
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: 'What is your email address?'
+
     }
+
+
+
 ]
 // let { title, description, size, license, installation, contributing, test } = await inquirer.prompt([
 
 const { title, description, size, contents, usage, installation, license, contributions, test, questions } = await inquirer.prompt(inquirerQuestions)
 
-const readmeText = `# ${title}
+const readmeText = `
+# Title
+${title}
+
 ## Description
 ${description}
 
 ## Table of Contents
 ${contents}
+
+
+
 `
 // put the code all inbetween one ` `
 fs.writeFile("README.md", readmeText, (err) => 
@@ -136,17 +141,17 @@ fs.writeFile("README.md", readmeText, (err) =>
 
 //         //create a function to generate markdown for README
 
-`
-        ${renderLicenseBadge(data.license)}
-        ${license}
-## Table of Contents
-* [Description](#description)
-* [Installation-Instructions](#installation) 
-* [License](#license)
-* [Usage-Information](#usage)
-* [Contributors](#contributing)
-* [Test-Instructions](#test)
-* [Questions](#questions)
+// `
+//         ${renderLicenseBadge(data.license)}
+//         ${license}
+// ## Table of Contents
+// * [Description](#description)
+// * [Installation-Instructions](#installation) 
+// * [License](#license)
+// * [Usage-Information](#usage)
+// * [Contributors](#contributing)
+// * [Test-Instructions](#test)
+// * [Questions](#questions)
        
 
 // //         `
@@ -185,13 +190,13 @@ fs.writeFile("README.md", readmeText, (err) =>
 
 
 //     //if user selects license Jumbo, then you want to return a different string.
-//     if (license === "jumbo") {
+    // if (license === "jumbo") {
 
 
     
-//         return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
+    //     return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
 
-//     }
+    // }
 
 //     // return ``
 
@@ -200,21 +205,3 @@ fs.writeFile("README.md", readmeText, (err) =>
 
 //     }
 // }
-
-//         //license > badge > github.
-//         //example: Boost Sofware License 1.0 *Find yourself a licence and connect it in the *return using "[here]"
-
-//         //EXAMPLE FOR PASSWORD
-//         // inquirer
-//         // .prompt([
-
-//         //     {
-//         //         name: 'password1',
-//         //         type: 'password',
-//         //         message: 'Enter a password',
-//         //         validate: requireLetterAndNumber,
-//         //     },
-            
-//         // ])
-//         // .then((answers) => console.log(JSON.stringify(answers, null, '  ')));
-
